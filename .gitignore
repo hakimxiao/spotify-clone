@@ -1,0 +1,114 @@
+# ------------------------------------------------------------
+# Monorepo root
+# ------------------------------------------------------------
+
+# VCS / local tooling
+.git/
+.qodo/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.code-workspace
+*.iml
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+*.local
+*.secret
+
+# Archives / temp
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# ------------------------------------------------------------
+# Flutter / Dart (client)
+# ------------------------------------------------------------
+
+client/.dart_tool/
+client/.flutter-plugins
+client/.flutter-plugins-dependencies
+client/.packages
+client/build/
+client/coverage/
+
+# Flutter platform outputs
+client/android/.gradle/
+client/android/app/debug/
+client/android/app/profile/
+client/android/app/release/
+client/android/local.properties
+client/android/key.properties
+client/ios/Flutter/.last_build_id
+client/ios/Flutter/App.framework
+client/ios/Flutter/Flutter.framework
+client/ios/Flutter/Flutter.podspec
+client/ios/Flutter/Generated.xcconfig
+client/ios/Flutter/ephemeral/
+client/ios/Pods/
+client/ios/.symlinks/
+client/ios/Runner.xcworkspace/
+client/macos/Flutter/ephemeral/
+client/macos/Pods/
+client/macos/.symlinks/
+client/linux/flutter/ephemeral/
+client/windows/flutter/ephemeral/
+
+# ------------------------------------------------------------
+# Python / FastAPI (server)
+# ------------------------------------------------------------
+
+server/__pycache__/
+server/**/*.py[cod]
+server/*$py.class
+server/.python-version
+server/.venv/
+server/venv/
+server/env/
+server/ENV/
+server/.env
+server/.env.*
+server/.pytest_cache/
+server/.mypy_cache/
+server/.ruff_cache/
+server/.pyre/
+server/.hypothesis/
+server/.tox/
+server/.nox/
+server/.coverage
+server/.coverage.*
+server/htmlcov/
+server/site/
+server/build/
+server/dist/
+server/.eggs/
+server/*.egg-info/
+server/pip-wheel-metadata/
+server/.ipynb_checkpoints/
+
+# FastAPI / app runtime artifacts
+server/uploads/
+server/media/
+server/staticfiles/
+
+# ------------------------------------------------------------
+# Dependency locks (optional by workflow)
+# Keep the ones your team intentionally versions.
+# ------------------------------------------------------------
+
+# server/poetry.lock
+# server/Pipfile.lock
+# server/uv.lock
