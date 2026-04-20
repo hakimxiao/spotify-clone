@@ -3,17 +3,16 @@ import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<SigninPage> createState() => _SigninPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SigninPageState extends State<SigninPage> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
-  final passwordController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -21,7 +20,6 @@ class _SignupPageState extends State<SignupPage> {
   void dispose() {
     nameController.dispose();
     emailController.dispose();
-    passwordController.dispose();
     super.dispose();
     formKey.currentState!.validate();
   }
@@ -45,22 +43,17 @@ class _SignupPageState extends State<SignupPage> {
               CustomField(hinText: 'Name', controller: nameController),
               SizedBox(height: 15),
               CustomField(hinText: 'Email', controller: emailController),
+
               SizedBox(height: 15),
-              CustomField(
-                hinText: 'Password',
-                controller: nameController,
-                isObscureText: true,
-              ),
-              SizedBox(height: 15),
-              AuthGradientButton(title: 'Sign Up', onTap: () {}),
+              AuthGradientButton(title: 'Sign In', onTap: () {}),
               SizedBox(height: 15),
               RichText(
                 text: TextSpan(
-                  text: 'Already have an account? ',
+                  text: 'Don\'nt have an account? ',
                   style: Theme.of(context).textTheme.titleMedium,
                   children: [
                     TextSpan(
-                      text: 'Sign In',
+                      text: 'Sign Up',
                       style: TextStyle(
                         color: AppPallete.gradient2,
                         fontWeight: FontWeight.bold,
