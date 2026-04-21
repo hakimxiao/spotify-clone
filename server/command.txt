@@ -1,0 +1,5 @@
+# JALANKAN PROJECT
+fastapi dev main.py
+
+# AKTIVASI VENV
+source venv/Scripts/activate
