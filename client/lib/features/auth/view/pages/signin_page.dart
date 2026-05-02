@@ -1,11 +1,11 @@
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/core/widgets/loader.dart';
-import 'package:client/features/auth/repository/auth_remote_repository.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
+import 'package:client/features/home/view/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,16 +31,19 @@ class _SigninPageState extends ConsumerState<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(authViewModelProvider)?.isLoading == true;
+    final isLoading =
+        ref.watch(authViewModelProvider.select((val) => val?.isLoading)) ==
+        true;
 
     ref.listen(authViewModelProvider, (_, next) {
       next?.when(
         data: (data) {
           showSnackbar(context, 'Login berhasil!');
 
-          Navigator.push(
+          Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => Scaffold()),
+            MaterialPageRoute(builder: (context) => HomePage()),
+            (_) => false,
           );
         },
         error: (error, stackTrace) {
@@ -81,26 +84,16 @@ class _SigninPageState extends ConsumerState<SigninPage> {
                     AuthGradientButton(
                       title: 'Sign In',
                       onTap: () async {
-                        if (!formKey.currentState!.validate()) return;
-
-                        final res = await AuthRemoteRepository().signin(
-                          email: emailController.text.trim(),
-                          password: passwordController.text,
-                        );
-
-                        if (!mounted) return;
-
-                        res.fold(
-                          (failure) =>
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(failure.message)),
-                              ),
-                          (user) => ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Welcome back, ${user.name}!'),
-                            ),
-                          ),
-                        );
+                        if (formKey.currentState!.validate()) {
+                          ref
+                              .read(authViewModelProvider.notifier)
+                              .signInUser(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        } else {
+                          showSnackbar(context, 'Please fill all the fields');
+                        }
                       },
                     ),
                     SizedBox(height: 15),

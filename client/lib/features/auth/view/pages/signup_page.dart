@@ -86,13 +86,15 @@ class _SignupPageState extends ConsumerState<SignupPage> {
                       title: 'Sign Up',
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
-                          await ref
+                          ref
                               .read(authViewModelProvider.notifier)
                               .signUpUser(
                                 name: nameController.text,
                                 email: emailController.text,
                                 password: passwordController.text,
                               );
+                        } else {
+                          showSnackbar(context, 'Please fill all the fields');
                         }
                       },
                     ),
