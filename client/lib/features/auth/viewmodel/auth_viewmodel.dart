@@ -9,7 +9,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_viewmodel.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class AuthViewModel extends _$AuthViewModel {
   late AuthRemoteRepository _authRemoteRepository;
   late AuthLocalRepository _authLocalRepository;
@@ -39,6 +39,8 @@ class AuthViewModel extends _$AuthViewModel {
       password: password,
     );
 
+    if (!ref.mounted) return;
+
     final val = switch (res) {
       Left(value: final l) => state = AsyncValue.error(
         l.message,
@@ -58,6 +60,8 @@ class AuthViewModel extends _$AuthViewModel {
       email: email,
       password: password,
     );
+
+    if (!ref.mounted) return;
 
     final val = switch (res) {
       Left(value: final l) => state = AsyncValue.error(
@@ -81,6 +85,7 @@ class AuthViewModel extends _$AuthViewModel {
 
     if (token != null) {
       final res = await _authRemoteRepository.getCurrentUserData(token);
+      if (!ref.mounted) return null;
       final val = switch (res) {
         Left(value: final l) => state = AsyncValue.error(
           l.message,
