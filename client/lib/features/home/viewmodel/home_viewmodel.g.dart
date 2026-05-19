@@ -46,7 +46,7 @@ final class GetAllSongsProvider
   }
 }
 
-String _$getAllSongsHash() => r'c7cd1129746d7d80197ebceced68e9b2ea89b922';
+String _$getAllSongsHash() => r'36bd4bb2847e69abae543b24d4e86a9baf96e4d6';
 
 @ProviderFor(HomeViewmodel)
 const homeViewmodelProvider = HomeViewmodelProvider._();
