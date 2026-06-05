@@ -11,8 +11,8 @@ class MusicSlab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentSong = ref.watch(currentSongProvider);
-    final songNotifier = ref.read(currentSongProvider.notifier);
+    final currentSong = ref.watch(currentSongNotifierProvider);
+    final songNotifier = ref.read(currentSongNotifierProvider.notifier);
 
     if (currentSong == null) {
       return SizedBox();

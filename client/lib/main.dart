@@ -26,7 +26,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentUser = ref.watch(currentUserProvider);
+    final currentUser = ref.watch(currentUserNotifierProvider);
 
     return MaterialApp(
       title: 'MusicMe',

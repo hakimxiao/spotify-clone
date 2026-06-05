@@ -6,59 +6,21 @@ part of 'auth_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, type=warning
+String _$authViewModelHash() => r'df4483c4f073e5d2fea0b9c6f946422aa3cc285c';
 
+/// See also [AuthViewModel].
 @ProviderFor(AuthViewModel)
-const authViewModelProvider = AuthViewModelProvider._();
+final authViewModelProvider =
+    NotifierProvider<AuthViewModel, AsyncValue<UserModel>?>.internal(
+  AuthViewModel.new,
+  name: r'authViewModelProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$authViewModelHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-final class AuthViewModelProvider
-    extends $NotifierProvider<AuthViewModel, AsyncValue<UserModel>?> {
-  const AuthViewModelProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'authViewModelProvider',
-        isAutoDispose: false,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$authViewModelHash();
-
-  @$internal
-  @override
-  AuthViewModel create() => AuthViewModel();
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(AsyncValue<UserModel>? value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<AsyncValue<UserModel>?>(value),
-    );
-  }
-}
-
-String _$authViewModelHash() => r'8c3552f2ca3657447fb6b3948ed4203c6e523628';
-
-abstract class _$AuthViewModel extends $Notifier<AsyncValue<UserModel>?> {
-  AsyncValue<UserModel>? build();
-  @$mustCallSuper
-  @override
-  void runBuild() {
-    final created = build();
-    final ref =
-        this.ref as $Ref<AsyncValue<UserModel>?, AsyncValue<UserModel>?>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<UserModel>?, AsyncValue<UserModel>?>,
-              AsyncValue<UserModel>?,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
-  }
-}
+typedef _$AuthViewModel = Notifier<AsyncValue<UserModel>?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

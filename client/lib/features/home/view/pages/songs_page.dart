@@ -36,7 +36,7 @@ class SongsPage extends ConsumerWidget {
                         return GestureDetector(
                           onTap: () {
                             ref
-                                .read(currentSongProvider.notifier)
+                                .read(currentSongNotifierProvider.notifier)
                                 .updateSong(song);
                           },
                           child: Padding(

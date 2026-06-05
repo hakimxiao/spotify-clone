@@ -19,7 +19,7 @@ class AuthViewModel extends _$AuthViewModel {
   AsyncValue<UserModel>? build() {
     _authRemoteRepository = ref.watch(authRemoteRepositoryProvider);
     _authLocalRepository = ref.watch(authLocalRepositoryProvider);
-    _currentUserNotifier = ref.watch(currentUserProvider.notifier);
+    _currentUserNotifier = ref.watch(currentUserNotifierProvider.notifier);
     return null;
   }
 
@@ -38,8 +38,6 @@ class AuthViewModel extends _$AuthViewModel {
       email: email,
       password: password,
     );
-
-    if (!ref.mounted) return;
 
     final val = switch (res) {
       Left(value: final l) => state = AsyncValue.error(
@@ -60,8 +58,6 @@ class AuthViewModel extends _$AuthViewModel {
       email: email,
       password: password,
     );
-
-    if (!ref.mounted) return;
 
     final val = switch (res) {
       Left(value: final l) => state = AsyncValue.error(
@@ -85,7 +81,6 @@ class AuthViewModel extends _$AuthViewModel {
 
     if (token != null) {
       final res = await _authRemoteRepository.getCurrentUserData(token);
-      if (!ref.mounted) return null;
       final val = switch (res) {
         Left(value: final l) => state = AsyncValue.error(
           l.message,

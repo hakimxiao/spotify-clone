@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'dart:ui';
 
@@ -10,8 +12,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_viewmodel.g.dart';
 
 @riverpod
-Future<List<SongModel>> getAllSongs(Ref ref) async {
-  final token = ref.watch(currentUserProvider)!.token;
+Future<List<SongModel>> getAllSongs(GetAllSongsRef ref) async {
+  final token = ref.watch(currentUserNotifierProvider)!.token;
   final res = await ref.watch(homeRepositoryProvider).getAllSongs(token: token);
 
   return switch (res) {
@@ -44,7 +46,7 @@ class HomeViewmodel extends _$HomeViewmodel {
       songName: songName,
       artist: artist,
       hexCode: rgbToHex(selectedColor),
-      token: ref.read(currentUserProvider)!.token,
+      token: ref.read(currentUserNotifierProvider)!.token,
     );
 
     final val = switch (res) {

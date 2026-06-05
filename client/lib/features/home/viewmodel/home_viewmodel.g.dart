@@ -6,97 +6,35 @@ part of 'home_viewmodel.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, type=warning
+String _$getAllSongsHash() => r'a53a3d396d1fb56df51c87f5b8268be0061ba2d3';
 
+/// See also [getAllSongs].
 @ProviderFor(getAllSongs)
-const getAllSongsProvider = GetAllSongsProvider._();
+final getAllSongsProvider = AutoDisposeFutureProvider<List<SongModel>>.internal(
+  getAllSongs,
+  name: r'getAllSongsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getAllSongsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-final class GetAllSongsProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<List<SongModel>>,
-          List<SongModel>,
-          FutureOr<List<SongModel>>
-        >
-    with $FutureModifier<List<SongModel>>, $FutureProvider<List<SongModel>> {
-  const GetAllSongsProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'getAllSongsProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
+typedef GetAllSongsRef = AutoDisposeFutureProviderRef<List<SongModel>>;
+String _$homeViewmodelHash() => r'358812683d797b7ebadc907d7dbc5f1683228009';
 
-  @override
-  String debugGetCreateSourceHash() => _$getAllSongsHash();
-
-  @$internal
-  @override
-  $FutureProviderElement<List<SongModel>> $createElement(
-    $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<List<SongModel>> create(Ref ref) {
-    return getAllSongs(ref);
-  }
-}
-
-String _$getAllSongsHash() => r'36bd4bb2847e69abae543b24d4e86a9baf96e4d6';
-
+/// See also [HomeViewmodel].
 @ProviderFor(HomeViewmodel)
-const homeViewmodelProvider = HomeViewmodelProvider._();
+final homeViewmodelProvider =
+    AutoDisposeNotifierProvider<HomeViewmodel, AsyncValue?>.internal(
+  HomeViewmodel.new,
+  name: r'homeViewmodelProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$homeViewmodelHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-final class HomeViewmodelProvider
-    extends $NotifierProvider<HomeViewmodel, AsyncValue<dynamic>?> {
-  const HomeViewmodelProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'homeViewmodelProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$homeViewmodelHash();
-
-  @$internal
-  @override
-  HomeViewmodel create() => HomeViewmodel();
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(AsyncValue<dynamic>? value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<AsyncValue<dynamic>?>(value),
-    );
-  }
-}
-
-String _$homeViewmodelHash() => r'2d7f34f366fedfce8baff8cd815c1a5c5b2ca04f';
-
-abstract class _$HomeViewmodel extends $Notifier<AsyncValue<dynamic>?> {
-  AsyncValue<dynamic>? build();
-  @$mustCallSuper
-  @override
-  void runBuild() {
-    final created = build();
-    final ref = this.ref as $Ref<AsyncValue<dynamic>?, AsyncValue<dynamic>?>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<dynamic>?, AsyncValue<dynamic>?>,
-              AsyncValue<dynamic>?,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
-  }
-}
+typedef _$HomeViewmodel = AutoDisposeNotifier<AsyncValue?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -6,59 +6,22 @@ part of 'current_song_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, type=warning
-
-@ProviderFor(CurrentSongNotifier)
-const currentSongProvider = CurrentSongNotifierProvider._();
-
-final class CurrentSongNotifierProvider
-    extends $NotifierProvider<CurrentSongNotifier, SongModel?> {
-  const CurrentSongNotifierProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'currentSongProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$currentSongNotifierHash();
-
-  @$internal
-  @override
-  CurrentSongNotifier create() => CurrentSongNotifier();
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(SongModel? value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<SongModel?>(value),
-    );
-  }
-}
-
 String _$currentSongNotifierHash() =>
-    r'62cc5282df1af7b3121ac020e93a684bc4fef7e7';
+    r'1d98db0df20facbb455e71d0a4a5ae67d7daad10';
 
-abstract class _$CurrentSongNotifier extends $Notifier<SongModel?> {
-  SongModel? build();
-  @$mustCallSuper
-  @override
-  void runBuild() {
-    final created = build();
-    final ref = this.ref as $Ref<SongModel?, SongModel?>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<SongModel?, SongModel?>,
-              SongModel?,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
-  }
-}
+/// See also [CurrentSongNotifier].
+@ProviderFor(CurrentSongNotifier)
+final currentSongNotifierProvider =
+    AutoDisposeNotifierProvider<CurrentSongNotifier, SongModel?>.internal(
+  CurrentSongNotifier.new,
+  name: r'currentSongNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$currentSongNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$CurrentSongNotifier = AutoDisposeNotifier<SongModel?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
