@@ -37,7 +37,8 @@ class MusicSlab extends ConsumerWidget {
       ),
       child: Stack(
         children: [
-          Container(
+          AnimatedContainer(
+            duration: Duration(milliseconds: 500),
             height: 66,
             width: MediaQuery.of(context).size.width - 16,
             decoration: BoxDecoration(
@@ -57,7 +58,9 @@ class MusicSlab extends ConsumerWidget {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(currentSong.thumbnail_url),
+                            fit: BoxFit.cover,
                           ),
+
                           borderRadius: BorderRadius.circular(4),
                         ),
                       ),

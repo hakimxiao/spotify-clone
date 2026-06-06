@@ -1,3 +1,5 @@
 dart run build_runner build
 
 dart run build_runner build --force-jit
+
+flutter pub run build_runner build
