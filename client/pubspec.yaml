@@ -41,6 +41,7 @@ dependencies:
   http: ^1.6.0
   isar_flutter_libs: ^4.0.0-dev.13
   just_audio: ^0.10.5
+  just_audio_background: ^0.0.1-beta.17
   path_provider: ^2.1.5
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.5
