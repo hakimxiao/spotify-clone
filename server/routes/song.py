@@ -85,7 +85,7 @@ def favorite_song(song: FavoriteSong,
 def list_fav_songs(db: Session=Depends(get_db), auth_details=Depends(auth_middleware)):
   user_id = auth_details['uid']
   
-  fav_songs = db.query(Favorite).filter(Favorite.user_id == user_id).options(joinedload(Favorite.song)).all()
+  fav_songs = db.query(Favorite).filter(Favorite.user_id == user_id).options(joinedload(Favorite.song), joinedload(Favorite.user)).all()
   
   return fav_songs
   

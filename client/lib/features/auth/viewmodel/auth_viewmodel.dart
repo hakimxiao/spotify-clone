@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:client/core/providers/current_user_notifier.dart';
-import 'package:client/features/auth/model/user_model.dart';
+import 'package:client/core/models/user_model.dart';
 import 'package:client/features/auth/repository/auth_local_repository.dart';
 import 'package:client/features/auth/repository/auth_remote_repository.dart';
 import 'package:fpdart/fpdart.dart';

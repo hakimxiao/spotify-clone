@@ -1,7 +1,9 @@
 import 'package:client/core/providers/current_song_notifier.dart';
+import 'package:client/core/providers/current_user_notifier.dart';
 import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/features/home/view/widgets/music_player.dart';
+import 'package:client/features/home/viewmodel/home_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,9 @@ class MusicSlab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentSong = ref.watch(currentSongNotifierProvider);
     final songNotifier = ref.read(currentSongNotifierProvider.notifier);
+    final userFavorites = ref.watch(
+      currentUserNotifierProvider.select((value) => value!.favorites),
+    );
 
     if (currentSong == null) {
       return SizedBox();
@@ -92,8 +97,19 @@ class MusicSlab extends ConsumerWidget {
                 Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
-                      icon: Icon(CupertinoIcons.heart),
+                      onPressed: () async {
+                        await ref
+                            .read(homeViewmodelProvider.notifier)
+                            .favSong(songId: currentSong.id);
+                      },
+                      icon: Icon(
+                        userFavorites
+                                .where((fav) => fav.song_id == currentSong.id)
+                                .toList()
+                                .isNotEmpty
+                            ? CupertinoIcons.heart_fill
+                            : CupertinoIcons.heart,
+                      ),
                       color: AppPallete.whiteColor,
                     ),
                     IconButton(
